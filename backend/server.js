@@ -1,6 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import cors from "cors";
+import { connectDB } from "./DB/db.js";
 
 dotenv.config();
 
@@ -17,5 +20,6 @@ app.get("/api/products", (req, res) => {
   ]);
 });
 app.listen(PORT, () => {
+  connectDB();
   console.log(`Server is running on http://localhost:${PORT}`);
 });
